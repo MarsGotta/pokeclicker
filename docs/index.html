@@ -28,7 +28,7 @@
     <script src="libs/Sortable.min.js"></script>
 
     <!--Minified scripts-->
-    <script src="scripts/script.min.js?v=0.5.4"></script>
+    <script src="scripts/script.min.js?v=0.5.5"></script>
 
     <!--Popper.js-->
     <script src="libs/popper.min.js"></script>
@@ -44,7 +44,7 @@
     <script src="libs/motio.js"></script>
 
     <!--Minified styles-->
-    <link href="styles/styles.min.css?v=0.5.4" rel="stylesheet">
+    <link href="styles/styles.min.css?v=0.5.5" rel="stylesheet">
 
     <!-- Google Analytics-->
         <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -87,7 +87,6 @@
 <link href="https://bootswatch.com/4/yeti/bootstrap.min.css" rel="stylesheet" data-bind="attr: {href: 'https://bootswatch.com/4/' + Settings.getSetting('theme').observableValue() + '/bootstrap.min.css'}">
 
 <!--$DEV_BANNER-->
-
 <div class="loader" id="loader">
     <br>
     <div class="loader-wrapper">
@@ -4714,6 +4713,19 @@
         attr: { class: MapHelper.calculateTownCssClass('Victory Road Hoenn') }">
 </rect>
 
+    <!--Sealed Chamber-->
+    
+
+<rect class="city"
+    data-town="Sealed Chamber" 
+    x="608"
+    y="560"
+    height="80"
+    width="96"
+    data-bind="click:function(){MapHelper.moveToTown('Sealed Chamber')},
+        attr: { class: MapHelper.calculateTownCssClass('Sealed Chamber') }">
+</rect>
+
 
 
 
@@ -6440,7 +6452,7 @@
         <span>Hatchery</span>
     </div>
     <button class='btn btn-sm btn-primary' style="position: absolute; right: 0px; top: 0px; width: auto; height: 41px;"
-            data-bind='click: function(){ BreedingController.openBreedingModal() }'>
+            data-bind='click: function(){ BreedingController.openBreedingModal(); BreedingController.filterBreedableList() }'>
         List
     </button>
     <div id='eggList' class="card-body p-0 show">
@@ -7377,7 +7389,7 @@ aria-labelledby="breedingModalLabel" aria-hidden="true">
                             Unfortunately, you don't have any pokémon of level 100 to breed.
                         </p>
                         <!-- ko if: App.game.party.hasMaxLevelPokemon() -->
-                        <ul class="row justify-content-center p-0" data-bind="foreach: BreedingController.breedableList">
+                        <ul class="row justify-content-center p-0" data-bind="foreach: BreedingController.breedableList()">
                             <li class="col-sm-4 col-md-3 col-lg-2 pokedexEntry text-nowrap" data-bind="style:{background: PokedexHelper.getBackgroundColors($data.name)}">
                                 <span style="top: 0; border-top-left-radius: 6px; border-top-right-radius: 6px;" data-bind="text: $data.name">name</span>
                                 <div data-bind="visible: App.game.party.alreadyCaughtPokemon($data.id, true)" style="position: absolute;right: 0px;top: 0px;">✨</div>
